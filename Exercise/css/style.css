@@ -1,0 +1,250 @@
+p, h1, h2, h3,h6{
+font-family: Arial, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color : rgba(0, 0, 0, 0.4) ;
+    backdrop-filter: blur(25px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+  }
+  
+  li {
+    display: inline-block;
+  }
+  li:first-child {
+    flex: 2;
+    align-self: flex-start;
+       	margin-right:10px;
+  }
+  .A1, .A2, .A3, .A5, .A6{
+    flex:1;
+	margin-left:10px;
+	
+    	margin-right:10px;
+  }
+  li:last-child {
+    flex: 2;
+    align-self: flex-end;
+    margin-left: 200px;
+    
+  }
+
+  li a {
+    display: block;
+    color: white;
+    font-size:30px;
+    font-weight: 400;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  li:first-child a {
+    font-size:40px;
+    font-weight: 600;
+  }
+  
+
+ 
+  
+  .menu div {
+    height: 3px !important;
+    background: #fff;
+    margin: 7px 0px 7px 0px;
+    border-radius: 20px;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+  }
+
+.B1,
+.B2,
+.B3 {
+  width: 25px;
+}
+
+
+
+
+
+
+  .hero-img {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+}
+
+  .innerA img {
+    width: 100%;
+    height: 80%;
+  }
+  .test{
+    position: absolute;
+    z-index: 1;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    color: #fff;
+    max-width: 1000px;
+    text-align: left;
+    top: 30%;
+    left: 10%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+    
+}
+
+   .test h3{
+	  font-size: 60px;
+    font-weight: 900;
+	  color: white;
+	 }
+   .test p{
+	  font-size:22px;
+	  color: white;
+	  letter-spacing: 2px;
+	 }
+
+   .c0{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+	    margin-right: 30px ;
+  }
+  .c0 h3, .c0 p{
+    flex: 1;
+  }
+
+  .c1 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+align-content: flex-start;
+    
+    
+  }
+  .c1 p, .c2 p{
+    
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: -10px ;
+	    margin-right: 30px ;
+   
+  }
+  .c11,.c12{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+  }
+
+  .c12 ,.c22
+    margin-top: -55px;
+
+  }
+
+  .c1-1h3, .c11p{
+    flex: 1;
+  }
+
+
+  .c2{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+	align-content: flex-start;
+
+  }
+
+  .c21,.c22{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+  }
+
+ @media screen and (max-width:786px){
+  .c1, .c2 {
+    display: none;
+  }
+  .main-col p{
+    display: none;
+  }
+ }
+
+
+ 
+
+   h1{
+       margin-top: 100px;
+       margin-left: 170px;
+       font-size: 65px;
+       font-weight: 900;
+       color: #A9A9F5;
+   }
+  div h3{
+      font-size: 26px;
+      color: #2E2E2E;
+  }
+  div p{
+      font-size: 20px;
+      font-weight: 500;
+      color: #424242;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+
+.jss487 {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+		font-family:Arial;
+}
+.jss459 {
+    font-size: 15px;
+	color:white;
+	font-family:Arial;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: --2px;
+
+}
+.jss448 {
+    font-size: 15px;
+	color:white;
+		font-family:Arial;
+    font-weight: 600;
+    line-height: 27px;
+    letter-spacing: -1px;
+}
+.jss417 {
+    margin: 0;
+}
+
+body a {
+    color: #fafafa;
+}
+
+  
