@@ -1,0 +1,39 @@
+.green {
+  color: lightgreen;
+}
+
+.red {
+  color: lightcoral;
+}
+
+.blue {
+  color: skyblue;
+}
+
+#itemList {
+  font-size: 1.5rem;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.nav {
+  background-color: #4d4db1;
+  color: white;
+  margin: 70px;
+}
+
+.nav h2 {
+  margin: 30px;
+}
+
+.nav h4 {
+  margin: 40px;
+  text-align: center;
+}
+/*# sourceMappingURL=main.css.map */

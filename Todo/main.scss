@@ -1,0 +1,43 @@
+
+
+$lg:lightgreen;
+$lr:lightcoral;
+$bl:rgb(77, 77, 177);
+$sk:skyblue;
+$wh:white;
+
+
+
+.green {
+        color:$lg;
+    }
+    .red {
+        color:$lr;
+    }
+    .blue {
+        color:$sk;
+    }
+    #itemList { font-size: 1.5rem;}
+    .show { display: block;}
+    .hide { display: none;
+    
+    }
+
+    .nav{
+
+        background-color: $bl;
+        color:$wh;
+        margin: 70px;
+
+        h2{
+
+            margin: 30px;
+        }
+
+        h4{
+
+            margin: 40px;
+            text-align: center;
+
+        }
+    }
