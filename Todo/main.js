@@ -118,12 +118,12 @@ const getList = function (todoItems) {
         "beforeend",
 
         ` <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <li class="list-group-item d-flex justify-content-between align-items-center"  style="border: 1px solid red;   border-color:rgb(77, 77, 177);">
-          <span class="title" data-time="${item.addedAt}"><a href="#" data-edit><i class="fa fa-bars" aria-hidden="true" style="color:rgb(77, 77, 177);"></i></a>          ${item.name}  </span> 
-          <span class="title" data-time="${item.addedAt}"    style=" margin-left:400px">${item.date} @ ${item.time} </span>
+        <li class="list-group-item d-flex justify-content-between align-items-right"  style="border: 1px solid red;   border-color:rgb(77, 77, 177);">
+          <span class="title" data-time="${item.addedAt}"><a href="#" data-edit><i class="fa fa-bars" aria-hidden="true" style="color:rgb(77, 77, 177); margin-right:0px;"></i></a>        ${item.name} </span> 
+          <span class="title" data-time="${item.addedAt}"    style=" margin-left:0px;  align-self: right;  margin-right:0px;"> ${item.date} @ ${item.time} </span>
          
        
-          <span style=" margin-top:100px  " >
+          <span style=" margin-top:30px  " >
           <a href="#" data-edit><i class="bi bi-pencil-square " style="color:rgb(77, 77, 177); "></i></a>
               <a href="#" data-done><i class="bi ${iconClass} square" style="color:rgb(77, 77, 177); "></i></a>
               
