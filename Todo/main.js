@@ -16,7 +16,7 @@ const showAlert = function (message, msgClass) {
   messageDiv.classList.add(msgClass, "show");
   messageDiv.classList.remove("hide");
   setTimeout(() => {
-    messageDiv.classList.remove("show",msgClass);
+    messageDiv.classList.remove("show", msgClass);
     messageDiv.classList.add("hide");
   }, 3000);
   return;
@@ -118,7 +118,7 @@ const getList = function (todoItems) {
         "beforeend",
 
         ` <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <li class="list-group-item d-flex justify-content-between align-items-right"  style="border: 1px solid red;   border-color:rgb(77, 77, 177);">
+        <li class="list-group-item d-flex justify-content-between align-items-right"  style="border: 1px solid red;   border-color:rgb(77, 77, 177); font-size:20px;">
           <span class="title" data-time="${item.addedAt}"><a href="#" data-edit><i class="fa fa-bars" aria-hidden="true" style="color:rgb(77, 77, 177); margin-right:0px;"></i></a>        ${item.name} </span> 
           <span class="title" data-time="${item.addedAt}"    style=" margin-left:0px;  align-self: right;  margin-right:0px;"> ${item.date} @ ${item.time} </span>
          
@@ -182,11 +182,11 @@ document.addEventListener("DOMContentLoaded", () => {
           name: itemName,
           isDone: false,
           addedAt: new Date().getTime(),
-          date:new Date().toLocaleDateString(),
-          time:new Date().toLocaleTimeString()
-        
+          date: new Date().toLocaleDateString(),
+          time: new Date().toLocaleTimeString()
+
           //time:moment(new Date()).format("YYYY-MM-DD hh:mm A")
-        
+
         };
         todoItems.push(itemObj);
         // set local storage
