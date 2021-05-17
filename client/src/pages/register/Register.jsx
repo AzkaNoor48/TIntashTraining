@@ -37,7 +37,7 @@ export default function Register() {
           </div>
           <form onSubmit={handleClick}>
         
-            <div className="form-holder active">
+            <div className="form-holder ">
               <input type="text" placeholder="name" className="form-control"id="name"
                     ref={username} name="name"
                />

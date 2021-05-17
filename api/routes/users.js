@@ -54,9 +54,29 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
-router.get("/getUsers", async (req, res) => {
-  User.find()
-  .then(foundUsers=>res.json(foundUsers));
+router.get("/suggestionsUsers", async (req, res) => {
+  
+        try {
+            const newArr = [...req.user.following, req.user._id]
+
+            const num  = req.query.num || 10
+
+            const users = await Users.aggregate([
+                { $match: { _id: { $nin: newArr } } },
+                { $sample: { size: Number(num) } },
+                { $lookup: { from: 'users', localField: 'followers', foreignField: '_id', as: 'followers' } },
+                { $lookup: { from: 'users', localField: 'following', foreignField: '_id', as: 'following' } },
+            ]).project("-password")
+
+            return res.json({
+                users,
+                result: users.length
+            })
+
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    
 });
 
 //get friends

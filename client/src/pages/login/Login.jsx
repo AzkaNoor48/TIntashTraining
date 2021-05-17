@@ -25,7 +25,7 @@ export default function Login() {
       </div>
       <form onSubmit={handleClick}>
         <h3>Sign In</h3>
-        <div className="form-holder active">
+        <div className="form-holder ">
           <input type="text" placeholder="e-mail" className="form-control" id="email"
                 ref={email} name="email" />
         </div>

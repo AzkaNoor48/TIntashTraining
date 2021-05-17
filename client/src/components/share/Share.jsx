@@ -92,7 +92,7 @@ export default function Share() {
             </div>
           </div>
           <button className="shareButton" type="submit">
-            Share
+            Post
           </button>
         </form>
       </div>

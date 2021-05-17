@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Add, Remove } from "@material-ui/icons";
 
+
 export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
@@ -79,11 +80,11 @@ export default function Rightbar({ user }) {
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
-            <span className="rightbarInfoValue">{user.city}</span>
+            <span className="rightbarInfoValue">{user.city || `private`}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">{user.from}</span>
+            <span className="rightbarInfoValue">{user.from || `private `}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relationship:</span>
@@ -92,7 +93,7 @@ export default function Rightbar({ user }) {
                 ? "Single"
                 : user.relationship === 1
                 ? "Married"
-                : "-"}
+                : "its complicated"}
             </span>
           </div>
         </div>
