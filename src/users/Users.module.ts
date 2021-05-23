@@ -3,14 +3,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { UsersController } from './Users.controller';
 import {userservice } from './Users.service';
-
+import { UserSchema } from './Users.model';
 
 @Module({
   imports: [
-    UsersModule,
-    MongooseModule.forRoot(
-      'mongodb+srv://Azka:azka1007@cluster0.gprli.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-    ),
+    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
   ],
  controllers: [UsersController],
  providers: [userservice],

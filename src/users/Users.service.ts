@@ -1,10 +1,17 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Users } from './Users.model'
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+
+
 
 @Injectable()
 export class userservice {
+    constructor(
+        @InjectModel('User') private readonly userModel: Model<Users>,
+      ) {}
     users: Users[] = [];
-    register(username,
+    async register(username,
 
         email: string,
 
@@ -29,7 +36,7 @@ export class userservice {
         relationship: number,
 
     ) {
-        const newUser = new Users(username,
+        const newUser = new this.userModel({username,
 
             email,
 
@@ -53,10 +60,11 @@ export class userservice {
 
             relationship,
 
-            true)
-        this.users.push(newUser);
+            timestamps:true});
+            const result = await newUser.save();
+       
 
-        return 'Registered successfully!';
+        return result.id;
     }
     login(Uemail: string, Upassword: string) {
         const user = this.finduser(Uemail, Upassword)[0];
