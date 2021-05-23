@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Posts } from './Posts.model'
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { Users } from '../users/Users.model'
 
 
 
@@ -63,11 +64,25 @@ export class postservice {
 
     async getallPosts(Uid: string) {
         try {
-            const user = await User.findOne({ username: Uid });
-            const posts = await Post.find({ userId: user._id });
-            
+            const user = await this.userModel.findOne({ username: Uid });
+            const posts = await this.PostModel.find({ userId: user._id });
+            return (posts);
           } catch (error) {
-            throw new NotFoundException('you dont follow this user.');
+            throw new NotFoundException('no Post.');
+        }
+    }
+    async getallTimelinePosts(Uid: string) {
+        try {
+            const currentUser = await this.userModel.findById(Uid);
+            const userPosts = await this.PostModel.find({ userId: currentUser._id });
+            const friendPosts = await Promise.all(
+              currentUser.followings.map((friendId) => {
+                return this.PostModel.find({ userId: friendId });
+              })
+            );
+            return (userPosts.concat(...friendPosts));
+          } catch (error) {
+            throw new NotFoundException('no Post.');
         }
     }
     async deletePost(PID: string) {
