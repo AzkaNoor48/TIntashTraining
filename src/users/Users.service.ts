@@ -118,7 +118,7 @@ export class userservice {
         from: string,
 
         relationship: number) {
-            const updateduser = await this.findUser(email);
+            const updateduser = await this.findUser(email,password);
         if (username) {
             updateduser.username = username;
         }  if (password) {

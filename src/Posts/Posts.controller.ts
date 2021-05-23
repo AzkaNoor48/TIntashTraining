@@ -10,7 +10,6 @@ export class PostsController {
         @Body('userId') PuserId: string,
         @Body('desc') Pdesc: string,
         @Body('img') Pimg: string,
-
         @Body('likes') Plikes: string[],
        
 
