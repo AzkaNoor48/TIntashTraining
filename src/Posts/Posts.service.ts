@@ -77,6 +77,22 @@ export class postservice {
         }
     }
 
+    async like(id: string,Uid: string) {
+        try {
+            const post = await this.PostModel.findById(id);
+            if (!post.likes.includes(Uid)) {
+              await post.updateOne({ $push: { likes: Uid} });
+            
+            } else {
+              await post.updateOne({ $pull: { likes: Uid } });
+            
+            }
+          }catch (error) {
+            throw new NotFoundException('no like.');
+        }
+    }
+
+
     
 
     async getallTimelinePosts(Uid: string) {

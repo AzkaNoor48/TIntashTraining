@@ -69,6 +69,19 @@ export class userservice {
 
         return result.id;
     }
+    async getUser(Uemail: string, Uname: string) {
+        try {
+            const user = Uemail
+              ? await this.userModel.findById(Uemail)
+              : await this.userModel.findOne({ username: Uname });
+            //const { password, updatedAt, ...other } = user._doc;
+           return(user);
+          } catch (err) {
+            throw new NotFoundException('Could not find user.');
+          }
+     
+    }
+
     login(Uemail: string, Upass: string) {
         const user = this.findUser(Uemail, Upass)[0];
         return { ...user };

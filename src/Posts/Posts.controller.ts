@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param,Patch ,Delete} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param,Patch ,Put,Delete} from '@nestjs/common';
 import { postservice } from './Posts.service';
 
 @Controller('posts')
@@ -25,6 +25,11 @@ export class PostsController {
     getPost() {
         return this.PostService.getPosts();
     }
+    @Put("/:id/like")
+    likePost(@Param('id') id: string, @Body('uid') uid: string) {
+        return this.PostService.like(id, uid);
+    }
+  
     @Get("/profile/:username")
     getAllPost( @Param('username') username: string,) {
         return this.PostService.getallPosts(username);

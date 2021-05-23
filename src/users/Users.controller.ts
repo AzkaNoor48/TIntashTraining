@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param,Patch ,Put,Delete} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param,Patch ,Query,Put,Delete} from '@nestjs/common';
 import { userservice } from './Users.service';
 
 @Controller('users')
@@ -37,11 +37,15 @@ export class UsersController {
     login(@Body('email') uemail: string, @Body('password') upassword: string) {
         return this.UserService.login(uemail, upassword);
     }
+    @Get()
+    getAUser(@Query('email') uemail: string, @Body('name') Uname: string) {
+        return this.UserService.getUser(uemail, Uname);
+    }
 
     @Patch()
     updateProduct(
         @Body('username') Rusername: string,
-        @Body('email') Remail: string,
+        @Param('email') Remail: string,
         @Body('password') Rpassword: string,
         @Body('desc') Rdesc: string,
         @Body('city') Rcity: string,
