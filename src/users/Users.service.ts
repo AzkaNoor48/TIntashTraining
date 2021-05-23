@@ -158,6 +158,7 @@ export class userservice {
                 const { _id, username, profilePicture } = friend;
                 friendList.push({ _id, username, profilePicture });
             });
+            return(friendList);
         } catch (error) {
             throw new NotFoundException('Could not find user.');
         }

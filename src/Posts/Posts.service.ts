@@ -48,8 +48,13 @@ export class postservice {
         return post;
     }
 
-    getPost() {
-        return [...this.posts];
+  async getPost(Uid: string) {
+        try {
+            const post = await this.PostModel.findById(Uid);
+            return(post);
+          } catch (err) {
+            throw new NotFoundException('Could not find post.');
+          }
 
     }
 
@@ -71,6 +76,9 @@ export class postservice {
             throw new NotFoundException('no Post.');
         }
     }
+
+    
+
     async getallTimelinePosts(Uid: string) {
         try {
             const currentUser = await this.userModel.findById(Uid);
@@ -82,7 +90,7 @@ export class postservice {
             );
             return (userPosts.concat(...friendPosts));
           } catch (error) {
-            throw new NotFoundException('no Post.');
+            throw new NotFoundException('no timeline Post.');
         }
     }
     async deletePost(PID: string) {
