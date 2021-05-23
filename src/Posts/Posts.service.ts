@@ -9,6 +9,7 @@ import { Model } from 'mongoose';
 export class postservice {
     constructor(
         @InjectModel('Post') private readonly PostModel: Model<Posts>,
+        @InjectModel('User') private readonly userModel: Model<Users>,
     ) { }
 
     posts: Posts[] = [];
@@ -60,7 +61,15 @@ export class postservice {
         updatepost.save;
     }
 
-
+    async getallPosts(Uid: string) {
+        try {
+            const user = await User.findOne({ username: Uid });
+            const posts = await Post.find({ userId: user._id });
+            
+          } catch (error) {
+            throw new NotFoundException('you dont follow this user.');
+        }
+    }
     async deletePost(PID: string) {
         const result = await this.PostModel.deleteOne({ _id: PID }).exec();
         if (result.n === 0) {
