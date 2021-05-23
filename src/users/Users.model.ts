@@ -64,32 +64,32 @@ export const UserSchema = new mongoose.Schema({
 
 
 
-export class Users {
-    constructor(
-        public username: string,
+export  interface Users extends mongoose.Document  {
 
-        public email: string,
+         username: string,
 
-        public password: string,
+         email: string,
 
-        public  profilePicture: string,
+         password: string,
 
-        public coverPicture: string,
+          profilePicture: string,
 
-        public followers: string[],
+         coverPicture: string,
 
-        public followings: string[],
+         followers: string[],
 
-        public isAdmin: string,
+         followings: string[],
+
+         isAdmin: string,
     
-        public desc: string,
+         desc: string,
 
-        public city: string,
+         city: string,
 
-        public from: string,
+         from: string,
 
-        public relationship: number,
+         relationship: number,
 
-        public timestamps: true
-    ) { }
+         timestamps: true
+    
 }

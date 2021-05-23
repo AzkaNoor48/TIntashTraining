@@ -22,17 +22,17 @@ export const  PostSchema = new mongoose.Schema(
 );
 
 
-export class Posts {
-    constructor(
-        public userId: string,
+export  interface Posts extends mongoose.Document  {
+   
+         userId: string,
 
-        public desc: string,
+         desc: string,
 
-        public img: string,
+         img: string,
 
  
-        public likes: string[],
+         likes: string[],
 
      
-    ) { }
+  
 }

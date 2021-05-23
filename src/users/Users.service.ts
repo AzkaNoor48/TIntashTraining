@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Users } from './Users.model'
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+const bcrypt = require("bcrypt");
 
 
 
@@ -66,24 +67,43 @@ export class userservice {
 
         return result.id;
     }
-    login(Uemail: string, Upassword: string) {
-        const user = this.finduser(Uemail, Upassword)[0];
+    login(Uemail: string,Upass: string) {
+        const user = this.findUser(Uemail,Upass)[0];
         return { ...user };
     }
-    private finduser(Uemail: string, Upassword: string): [Users, number] {
-        const userIndex = this.users.findIndex(u => u.email === Uemail && u.password === Upassword);
-        const user = this.users[userIndex];
-
-        if (!user) {
-            throw new NotFoundException('Could not find user.');
+    private async findUser(Uemail: string,Upass: string): Promise<Users> {
+        let user;
+        try {
+          user = await this.userModel.findById(Uemail).exec();
+          const validPassword = await bcrypt.compare(Upass, user.password)
+        } catch (error) {
+          throw new NotFoundException('Could not find user.');
         }
-        return [user, userIndex]
-    }
-    getUsers() {
-        return [...this.users];
+        if (!user) {
+          throw new NotFoundException('Could not find user.');
+        }
+        return user;
+      }
+        async getUsers() {
+            const users = await this.userModel.find().exec();
+            return users.map(user => ({
+                username: user.username,
+                email: user.email,
+                password: user.password,
+                followers: user.followers,
+                followings: user.followings,
+                profilePicture: user.profilePicture,
+                coverPicture: user.coverPicture,
+                isAdmin: user.isAdmin,
+              CountQueuingStrategy: user.city,
+              from: user.from,
+              desc: user.desc,
+              relationship: user.relationship,
+            }));
+          }
 
-    }
-    UpdateUser(
+    
+    async UpdateUser(
 
         username: string,
 
@@ -98,10 +118,11 @@ export class userservice {
         from: string,
 
         relationship: number) {
-        const [user, index] = this.finduser(email, password);
-        const updateduser = { ...user };
+            const updateduser = await this.findUser(email);
         if (username) {
             updateduser.username = username;
+        }  if (password) {
+            updateduser.password = password;
         }
         if (desc) {
             updateduser.desc = desc;
@@ -113,12 +134,14 @@ export class userservice {
         } if (relationship) {
             updateduser.relationship = relationship;
         }
-        this.users[index] = updateduser;
+       updateduser.save();
     }
 
 
-    deleteUser(Uemail: string, Upassword: string) {
-        const index = this.finduser(Uemail, Upassword)[1];
-        this.users.splice(index, 1);
+   async deleteUser(Uemail: string) {
+        const result = await this.userModel.deleteOne({_id: Uemail}).exec();
+        if (result.n === 0) {
+          throw new NotFoundException('Could not find product.');
+        }
     }
 }

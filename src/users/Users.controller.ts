@@ -49,8 +49,8 @@ export class UsersController {
     }
   
     @Delete()
-    removeProduct(@Body('email') uemail: string, @Body('password') upassword: string){
-        this.UserService.deleteUser(uemail, upassword);
+    deleteUser(@Body('email') uemail: string){
+        this.UserService.deleteUser(uemail);
         return null;
     }
 

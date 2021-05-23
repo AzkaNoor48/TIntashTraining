@@ -35,20 +35,30 @@ export class postservice {
 
         return result.id;
     }
-    GetPost(Uid: string) {
-        const post = this.findpost(Uid)[0];
-        return { ...post };
-    }
-    private findpost(Uid: string): [Posts, number] {
-        const userIndex = this.posts.findIndex(u => u.userId === Uid);
-        const user = this.posts[userIndex];
-
-        if (!user) {
-            throw new NotFoundException('Could not find post.');
+    async getPosts() {
+        const posts = await this.PostModel.find().exec();
+        return posts.map(post => ({
+          id: post.userId,
+          img: post.img,
+          desc: post.desc,
+          likes: post.likes,
+        }));
+      }
+    
+      private async findpost(id: string): Promise<Posts> {
+        let post;
+        try {
+          post = await this.PostModel.findById(id).exec();
+        } catch (error) {
+          throw new NotFoundException('Could not find post.');
         }
-        return [user, userIndex]
-    }
-    getPosts() {
+        if (!post) {
+          throw new NotFoundException('Could not find post.');
+        }
+        return post;
+      }
+
+    getPost () {
         return [...this.posts];
 
     }
